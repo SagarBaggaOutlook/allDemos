@@ -1,0 +1,31 @@
+<html ng-app="docsTemplateUrlDirective">
+	<head>
+		<script src="F:\NG\angular.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>	
+	</head>
+	<body ng-controller="Controller">
+		
+
+<!-- <div ng-controller="Controller">
+  Hello <input ng-model='name'> <hr/>
+  <b>Alternative ways for naming conventions</b><br><span ng-bind="name"></span> <br/>
+  <span ng:bind="name"></span> <br/>
+  <span ng_bind="name"></span> <br/>
+  <span data-ng-bind="name"></span> <br/>
+  <span x-ng-bind="name"></span> <br/>
+</div> -->
+
+<hr><!-- 
+<my-dir></my-dir>
+<span my-dir="exp"></span>
+directive: my-dir exp
+<span class="my-dir: exp;"></span>
+   -->
+<div >
+  <div my-customer></div>
+</div>
+	</body>
+</html>
+
+<!-- what directives a given element matches.  -->
+<!-- Factory function is invoked using $injector.invoke which makes it injectable just like a controller -->

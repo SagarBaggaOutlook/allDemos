@@ -1,0 +1,5 @@
+DI is pervasive throughout Angular. You can use it when defining components or when providing run and config blocks for a module.
+
+The run method accepts a function, which can be injected with "service", "value" and "constant" components as dependencies. Note that you cannot inject "providers" into run blocks.
+
+The config method accepts a function, which can be injected with "provider" and "constant" components as dependencies. Note that you cannot inject "service" or "value" components into configuration.

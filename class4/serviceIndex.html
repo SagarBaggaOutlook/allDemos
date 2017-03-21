@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- <link rel="stylesheet" href="F:\NG\class\class4\bootstrap\css\bootstrap.css"> -->
+		<script src="F:\NG\angular.min.js"></script>
+		<script type="text/javascript" src="serviceScript.js"></script>	
+	</head>
+	<body>
+		<div ng-controller="myappcontroller" >			
+			<select ng-model="inCurr">
+				<option ng-repeat='n in names'>{{n}}</option>
+			</select>
+			<div><b>Hello : </b>{{msg}} </div><div> <b>Direct bind from dropdownlist : </b>{{inCurr}}
+			</div>
+			<div class="container-fluid"><b>Data fetch from json according to dropdownlist : </b>{{jsonOuput(n)}}
+			</div>
+			
+		</div>
+	</body>
+</html>

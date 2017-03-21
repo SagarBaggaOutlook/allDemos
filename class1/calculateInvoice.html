@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="angular.min.js"></script>
+</head>
+<body ng-app >
+	<b>Invoice Details </b>
+	<div>
+		cost :<input type="number" min="1" ng-model="c">
+		</div>
+		<div>
+		Item :<input type="number" min="2" ng-model="p">
+		</div>
+		<div>
+		<b>Total Price: {{c*p | currency}}</b>
+	</div>
+</body>
+</html>

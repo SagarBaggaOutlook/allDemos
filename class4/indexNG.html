@@ -1,0 +1,75 @@
+<!-- <html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Services</title>
+  <script src="F:\NG\angular.min.js"></script>
+		<script type="text/javascript" src="scriptNG.js"></script>	
+ </head>
+ <body ng-app="myServiceModule">
+  <div id="simple" ng-controller="MyController">
+  	<input type="text" ng-model="message" ng-init="message='Sagar'">
+     <input type="button" value="Notify Me" ng-click="callNotify(message);" />
+  </div>
+  <p>You have to click 3 times to see pop up alert!</p>
+ </body>
+</html> -->
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="F:\NG\angular.min.js"></script>
+		<script type="text/javascript" src="invoice1.js"></script>	
+	</head>
+	<body>
+		<div ng-controller="myappcontroller" class="container-fluid">			
+			<select ng-model="inCurr">
+				<option ng-repeat='n in names'>{{n}}</option>
+			</select>
+			<div><b>Hello : </b>{{msg}} </div><div> <b>Direct bind from dropdownlist : </b>{{inCurr}}
+			</div>
+			<div><b>Data fetch from json according to dropdownlist : </b>{{jsonOuput(n)}}</div>
+			
+		</div>
+	</body>
+</html> -->
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Services</title>
+  <script src="F:\NG\angular.min.js"></script>
+<script>
+ var myapp = angular.module("myapp", []);
+ var myController = myapp.controller("myController", function ($scope) {
+ 
+ $scope.datetime = new Date();
+ 
+ $scope.updateTime = function () {
+ 	console.log("ngclick begins-----");
+ $scope.datetime = new Date();
+ console.log($scope.datetime);
+ console.log("ngclick ends-----");
+ }
+ 
+ document.getElementById("updateTimeButton").addEventListener('click', function () {
+ console.log("update time clicked");
+ $scope.datetime = new Date();
+  
+  $scope.$digest();
+ console.log($scope.datetime);
+
+ });
+ });
+ </script>
+ 
+</head>
+<body ng-app="myapp" ng-controller="myController">
+ <button ng-click="updateTime()">Update time - ng-click</button>
+ <button id="updateTimeButton">Update time</button>
+ <br />
+ 
+</body>
+</html>

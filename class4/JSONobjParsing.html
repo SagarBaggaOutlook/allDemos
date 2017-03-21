@@ -1,0 +1,48 @@
+<!-- In order to stay independent of the browser implementation of the window JSON object, JSON objects are serialized in AngularJS with angular.toJson.
+JSON strings are de-serialized with angular.fromJson.
+A JSON object de-serialized with JSON.parse isn't necessarily of type "JSON" - so Object.prototype.toString.call(jsonObject) will return "[object Object]" rather than "[object JSON]".
+ --><!DOCTYPE html>
+<html ng-app="someApp">
+<head>
+    <meta charset="UTF-8">
+  <title>Parsing JSON Object inside AngularJS controller</title>
+  <script src="F:\NG\angular.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.js"></script>
+</head>
+<body>
+    <div ng-controller="someController">
+        <div>property 0: <b>{{ someModel.0 }}</b></div>
+        <div>property 1: <b>{{ someModel.1 }}</b></div>
+        <div>property 2: <b>{{ someModel.2 }}</b></div>
+        <div>property 3: <b>{{ someModel.3 }}</b></div>
+        <div>{{ someInfo }}</div>
+        <div>{{ someMoreInfo }}</div>
+        <div>{{ someModelSerialized }}</div>
+    </div>
+ 
+    <script type="text/javascript">
+        angular.module('someApp', [])
+            .factory('someFactory', [function() {
+               var jsonString = '{' +
+                       '"0":"Sample_IS_Action.xml",' + 
+                       '"1":"Sample_IS_Action_123.xml",' +
+                       '"2":"Sample_SOAP_Action.xml",' + 
+                       '"3":"Sample_SOAP_IS_Action.xml"' +
+                   '}';
+                   
+                return function() {
+                    // use fromJson to convert a JSON string to an object https://docs.angularjs.org/api/ng/function/angular.fromJson
+                    return angular.fromJson(jsonString);
+                }; 
+            }])
+            .controller('someController', ['$scope', 'someFactory',function($scope,someFactory) {
+                var result;
+                result = someFactory();
+                $scope.someModel = result;
+                $scope.someInfo = Object.prototype.toString.call(result);                
+                $scope.someMoreInfo = Object.prototype.toString.call(window.JSON); 
+                $scope.someModelSerialized = angular.toJson(result); // https://docs.angularjs.org/api/ng/function/angular.toJson                
+            }]);
+    </script>
+</body>
+</html>

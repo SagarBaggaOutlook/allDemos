@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<script src="F:\NG\angular.min.js"></script>
+		<script type="text/javascript" src="test.js"></script>
+		
+	</head>
+	<body ng-app="myapp">
+		<div ng-controller="EventContoller">
+			<input type="text" id="abc" value="" onclick="abc(this);">
+			<button ng-click="clickMe()">click me</button>
+			<p id="one-time-binding-example">one time binding {{::name}}</p>
+			<p id="normal-binding-example">normal binding{{name}}</p>
+			{{names}}
+		</div>
+	</body>
+</html>

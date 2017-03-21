@@ -1,0 +1,41 @@
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>$DIGEST</title>
+  <script src="F:\NG\angular.min.js"></script>
+<script>
+ var myapp = angular.module("myapp", []);
+ var myController = myapp.controller("myController", function ($scope) {
+ 
+ $scope.datetime = new Date();
+ 
+ $scope.updateTime = function () {
+ 	console.log("ngclick begins-----");
+ $scope.datetime = new Date();
+ console.log($scope.datetime);
+ console.log("ngclick ends-----");
+ }
+ 
+ document.getElementById("updateTimeButton").addEventListener('click', function () {
+ console.log("update time clicked");
+ $scope.datetime = new Date();
+  
+/*When you will click on second button, the data binding is not updated. Since $scope.$digest() is not called after the second button's event listener is executed. In this way on clicking the second button the time will be updated in the $scope.data.time variable, but the new time will never displayed.
+
+To fix this issue you need to add a $scope.$digest() call to the second button event listener, like this*/
+
+  $scope.$digest(); 			
+ console.log($scope.datetime);
+
+ });
+ });
+ </script>
+ 
+</head>
+<body ng-app="myapp" ng-controller="myController">
+ <button ng-click="updateTime()">Update time - ng-click</button>
+ <button id="updateTimeButton">Update time</button>
+ <br />
+ 
+</body>
+</html>

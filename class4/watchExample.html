@@ -1,0 +1,25 @@
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>$watch</title>
+  <script src="F:\NG\angular.min.js"></script>
+<script>
+ var myapp = angular.module("myapp", []);
+ var myController = myapp.controller("myController", function ($scope) {
+ $scope.name = 'dotnet-tricks.com';
+ $scope.counter = 0;
+ $scope.$watch('name', function (newValue, oldValue) {
+ $scope.counter = $scope.counter + 1;
+ });
+ });
+ </script>
+ 
+</head>
+<body ng-app="myapp" ng-controller="myController">
+ <input type="text" ng-model="name" />
+ <br />
+ Counter: {{counter}}
+<!--  newvalue: {{newValue}}
+ oldvalue: {{oldValue}} -->
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html ng-app="tryinvoice1" >
+<head>
+	<script src="F:\NG\angular.min.js"></script>
+	<script type="text/javascript" src="tryinvoice1.js"></script>
+</head>
+<body bgcolor="cyan" >
+		<div ng-controller="trycontroller1 as invoice1" >
+		<b>Invoice Control</b>
+			<div>quantity: <input type="number" min="0" ng-model="invoice1.qty" ></div>
+			<div>cost: <input type="number" min="0" ng-model="invoice1.cost"> 
+
+			<select ng-model="invoice1.inCurr">				
+					<option ng-repeat="cur in invoice1.currencies">{{cur}}</option>	
+			</select>
+			</div>
+			
+		<b>Total: </b>	
+		<span ng-repeat= "cur in invoice1.currencies">{{invoice1.totalmoney(cur)}}</span>
+ 	</div>
+</body> 
+</html>
+
+<!-- ng-init="qty=1;cost=2 NOt working here -->

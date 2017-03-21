@@ -1,0 +1,23 @@
+<html>
+<head>		
+	<script src="F:\NG\angular.min.js"></script>
+	<script>
+		var app = angular.module("app",[]);
+		app.controller("appController",function($scope){
+			var counter = 0;
+			$scope.names = ["ram","shyam","kapil"];
+			$scope.clickMe = function(clickEvent){
+				$scope.name = names[counter%names.length];
+				counter++;
+			}
+		});
+	</script>
+</head>
+<body ng-app="app">
+<div ng-controller="appController">
+<button ng-click=clickMe($event)>click me again</button>
+name : {{name}}<hr>
+
+</div>
+</body>
+</html>

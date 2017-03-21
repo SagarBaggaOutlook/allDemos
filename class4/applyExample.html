@@ -1,0 +1,42 @@
+<!-- Angular do auto-magically updates only those model changes which are inside AngularJS context. When you do change in any model outside of the Angular context (like browser DOM events, setTimeout, XHR or third party libraries), then you need to inform Angular of the changes by calling $apply() manually. When the $apply() function call finishes AngularJS calls $digest() internally, so all data bindings are updated.
+
+In above example, instead of calling $digest() function inside the button listener function you can used the $apply() function like this:
+ -->
+ <html>
+ <head>
+  <meta charset="UTF-8">
+  <title>$APPLY</title>
+  <script src="F:\NG\angular.min.js"></script>
+<script>
+ var myapp = angular.module("myapp", []);
+ var myController = myapp.controller("myController", function ($scope) {
+ 
+ $scope.datetime = new Date();
+ 
+ $scope.updateTime = function () {
+ 	console.log("ngclick begins-----");
+ $scope.datetime = new Date();
+ console.log($scope.datetime);
+ console.log("ngclick ends-----");
+ }
+ 
+ document.getElementById("updateTimeButton").addEventListener('click', function () {
+ $scope.$apply(function () {
+ console.log("update time clicked");
+ $scope.datetime = new Date();
+ 
+ console.log($scope.datetime);
+ });
+
+ });
+ });
+ </script>
+ 
+</head>
+<body ng-app="myapp" ng-controller="myController">
+ <button ng-click="updateTime()">Update time - ng-click</button>
+ <button id="updateTimeButton">Update time</button>
+ <br />
+ 
+</body>
+</html>
